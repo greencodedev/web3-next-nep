@@ -7,7 +7,6 @@ import { useEffect, useState } from 'react'
 
 interface ModalProps {
   modalIsOpen: boolean
-  isConnect: boolean
   closeModal: any
   showDetailsModal: any
 }
@@ -23,7 +22,6 @@ const customStyles = {
 }
 export default function CheckWalletModal({
   modalIsOpen,
-  isConnect,
   closeModal,
   showDetailsModal,
 }: ModalProps) {
@@ -36,7 +34,6 @@ export default function CheckWalletModal({
 
   useEffect(() => {
     if (active) {
-      localStorage.setItem('isWalletConnected', 'true')
       toast.success('Connected successfully.')
       setIsLoading(false)
       closeModal()
@@ -62,7 +59,6 @@ export default function CheckWalletModal({
     closeModal()
   }
 
-  console.log('active => ', active)
   return (
     <Modal
       ariaHideApp={false}
@@ -97,8 +93,8 @@ export default function CheckWalletModal({
             {active
               ? 'Wallet Details'
               : isLoading
-              ? 'Connecting...'
-              : 'Connect Now'}
+                ? 'Connecting...'
+                : 'Connect Now'}
           </button>
           <button
             className="rounded-md bg-gray-200 px-4 py-2 text-black"

@@ -6,15 +6,8 @@ import ExchangeForm from '../components/exchangeForm'
 import { ToastContainer } from 'react-toast'
 
 export default function Home() {
-  const [isConnect, setIsConnect] = useState(false)
   const [isOpenConnectModal, setIsOpenConnectModal] = useState(false)
   const [isOpenDetailsModal, setIsOpenDetailsModal] = useState(false)
-
-  useEffect(() => {
-    const flag = localStorage?.getItem('isWalletConnected') === 'true'
-    setIsConnect(flag)
-  }, [])
-
   const openDetailsModal = () => {
     setIsOpenDetailsModal(true)
   }
@@ -58,7 +51,6 @@ export default function Home() {
       <CheckWalletModal
         modalIsOpen={isOpenConnectModal}
         closeModal={closeConnectModal}
-        isConnect={isConnect}
         showDetailsModal={openDetailsModal}
       />
       <WalletDetailsModal

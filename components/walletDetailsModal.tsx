@@ -45,7 +45,6 @@ export default function WalletDetailsModal({
   async function disconnect() {
     try {
       deactivate()
-      localStorage.setItem('isWalletConnected', 'false')
       toast.success('Disconnected successfully.')
     } catch (ex) {
       toast.error('Disconnection failed')
